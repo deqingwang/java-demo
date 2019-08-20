@@ -1,38 +1,37 @@
-package com.foobar.rest.bar;
+package com.foobar.rest.foo;
 
-import com.foobar.domain.bar.Bar;
-import com.foobar.persistence.bar.BarRepository;
-import com.foobar.service.bar.BarService;
+import com.foobar.domain.foo.Foo;
+import com.foobar.service.foo.FooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/bar")
-public class BarController {
+@RequestMapping("/foo")
+public class FooController {
 
-    private BarService service;
+    private FooService service;
 
     @Autowired
-    public BarController(BarService service) {
+    public FooController(FooService service) {
         this.service = service;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Bar get(@PathVariable("id") Integer id) {
-        Bar bar = service.get(id);
-        return bar;
+    public Foo get(@PathVariable("id") Integer id) {
+        Foo foo = service.get(id);
+        return foo;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Bar create(@RequestBody Bar body) {
-        Bar saved = service.create(body);
+    public Foo create(@RequestBody Foo body) {
+        Foo saved = service.create(body);
         return saved;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Bar update(@RequestBody Bar body) {
-        Bar saved = service.update(body);
+    public Foo update(@RequestBody Foo body) {
+        Foo saved = service.update(body);
         return saved;
     }
 
