@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/foo")
 public class FooController {
@@ -15,6 +17,12 @@ public class FooController {
     @Autowired
     public FooController(FooService service) {
         this.service = service;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Foo> getAll() {
+        List<Foo> list = service.getAll();
+        return list;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

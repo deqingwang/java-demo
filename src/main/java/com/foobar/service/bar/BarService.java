@@ -5,6 +5,8 @@ import com.foobar.persistence.bar.BarDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BarService {
 
@@ -14,6 +16,8 @@ public class BarService {
     public BarService(BarDAO barDAO) {
         this.barDAO = barDAO;
     }
+
+    public List<Bar> getAll() {return  barDAO.getAll(); }
 
     public Bar get(Integer id) {
         return  barDAO.get(id);

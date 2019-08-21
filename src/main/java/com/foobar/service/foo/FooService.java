@@ -5,6 +5,8 @@ import com.foobar.persistence.foo.FooDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FooService {
 
@@ -14,6 +16,8 @@ public class FooService {
     public FooService(FooDAO fooDAO) {
         this.fooDAO = fooDAO;
     }
+
+    public List<Foo> getAll() { return fooDAO.getAll();}
 
     public Foo get(Integer id) {
         return  fooDAO.get(id);
